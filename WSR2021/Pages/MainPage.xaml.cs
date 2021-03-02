@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WSR2021.Forms;
 
 namespace WSR2021.Pages
 {
@@ -38,5 +39,13 @@ namespace WSR2021.Pages
         {
             comboViewDataGrid.Items.Add(nameTextBox.SelectedItem);
         }
+
+        private void newBtn_Click(object sender, RoutedEventArgs e)
+        {
+            AddUserForm form = new AddUserForm();
+            form.ShowDialog();
+            Utils.db.ComboView.Load();
+            List<ComboView> list = Utils.db.ComboView.ToList();
+            nameTextBox.ItemsSource = list;        }
     }
 }

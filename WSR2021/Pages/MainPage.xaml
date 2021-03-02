@@ -16,12 +16,15 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+
+        <Button x:Name="newBtn" Content="Новый..." HorizontalAlignment="Center" VerticalAlignment="Center" Width="75" Grid.Row="4" Grid.Column="1" Click="newBtn_Click"/>
 
         <Grid x:Name="grid1" Grid.Column="1"  HorizontalAlignment="Center" Margin="0,0.2,0,0" Grid.Row="1" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
