@@ -24,7 +24,15 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Button x:Name="newBtn" Content="Новый..." HorizontalAlignment="Center" VerticalAlignment="Center" Width="75" Grid.Row="4" Grid.Column="1" Click="newBtn_Click"/>
+        <Grid Grid.Row="4" Grid.Column="1" Margin="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="newBtn" Content="Новый..." HorizontalAlignment="Center" VerticalAlignment="Center" Width="75" Click="newBtn_Click" Margin="0"/>
+            <Button x:Name="editBtn" Content="Редактировать" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Click="editBtn_Click"/>
+        </Grid>
 
         <Grid x:Name="grid1" Grid.Column="1"  HorizontalAlignment="Center" Margin="0,0.2,0,0" Grid.Row="1" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
@@ -37,7 +45,7 @@
             <Label Content="name:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
             <ComboBox x:Name="nameTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" SelectedItem="{Binding name, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" DisplayMemberPath="name"/>
         </Grid>
-        <DataGrid x:Name="comboViewDataGrid" AutoGenerateColumns="False" Grid.Column="1" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="0" Grid.Row="3" RowDetailsVisibilityMode="VisibleWhenSelected">
+        <DataGrid x:Name="comboViewDataGrid" AutoGenerateColumns="False" Grid.Column="1" EnableRowVirtualization="True" ItemsSource="{Binding}" Margin="0" Grid.Row="3" RowDetailsVisibilityMode="VisibleWhenSelected" SelectionMode="Single">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="nameColumn" Binding="{Binding name}" Header="name" Width="SizeToHeader"/>
             </DataGrid.Columns>

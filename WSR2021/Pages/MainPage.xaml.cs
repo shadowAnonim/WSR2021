@@ -42,10 +42,25 @@ namespace WSR2021.Pages
 
         private void newBtn_Click(object sender, RoutedEventArgs e)
         {
-            AddUserForm form = new AddUserForm();
+            AddUserForm form = new AddUserForm(null);
             form.ShowDialog();
             Utils.db.ComboView.Load();
             List<ComboView> list = Utils.db.ComboView.ToList();
-            nameTextBox.ItemsSource = list;        }
+            nameTextBox.ItemsSource = list;
+            nameTextBox.SelectedIndex = nameTextBox.Items.Count - 1;
+        }
+
+        private void editBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var select = comboViewDataGrid.SelectedItem as ComboView;
+            if (select == null)
+            {
+                MessageBox.Show("Выберите");
+                return;
+            }
+            User user = Utils.db.User.FirstOrDefault(el => el.id == select.id);
+            AddUserForm form = new AddUserForm(user);
+            form.ShowDialog();
+        }
     }
 }

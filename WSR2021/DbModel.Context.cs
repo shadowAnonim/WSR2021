@@ -28,5 +28,6 @@ namespace WSR2021
         public virtual DbSet<Service> Service { get; set; }
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<ComboView> ComboView { get; set; }
+        public virtual DbSet<Role> Role { get; set; }
     }
 }

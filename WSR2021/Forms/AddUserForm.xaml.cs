@@ -21,12 +21,23 @@ namespace WSR2021.Forms
     public partial class AddUserForm : Window
     {
         User _user;
-        public AddUserForm()
+        bool edit = true;
+        public AddUserForm(User user)
         {
             InitializeComponent();
-            _user = new User();
-            _user.role = 0;
-            grid1.DataContext = _user;
+            userRoleTextBox.ItemsSource = Utils.db.Role.ToList();
+            if (user == null)
+            {
+                _user = new User();
+                user.role = 0;
+                edit = false;
+            }
+            else
+            {
+                _user = user;
+                user.role = 0;
+                edit = true;
+            }
         }
 
         //private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -41,10 +52,29 @@ namespace WSR2021.Forms
 
         private void addBtn_Click(object sender, RoutedEventArgs e)
         {
-            Utils.db.User.Load();
-            Utils.db.User.Add(_user);
-            Utils.db.SaveChanges();
-            this.Close();
+            if (edit)
+            {
+                Utils.db.User.Load();
+                Utils.db.SaveChanges();
+                this.Close();
+            }
+            else
+            {
+                Utils.db.User.Load();
+                Utils.db.User.Add(_user);
+                Utils.db.SaveChanges();
+                this.Close();
+            }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            //System.Windows.Data.CollectionViewSource userViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("userViewSource")));
+            // Загрузите данные, установив свойство CollectionViewSource.Source:
+            // userViewSource.Source = [универсальный источник данных]
+            grid1.DataContext = _user;
+
         }
     }
 }

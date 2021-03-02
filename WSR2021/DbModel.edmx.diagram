@@ -9,6 +9,8 @@
         <EntityTypeShape EntityType="WSR2021Model.User" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
         <AssociationConnector Association="WSR2021Model.UserService" ManuallyRouted="false" />
         <EntityTypeShape EntityType="WSR2021Model.ComboView" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="WSR2021Model.Role" Width="1.5" PointX="3.375" PointY="4.875" />
+        <AssociationConnector Association="WSR2021Model.FK_User_Role" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
